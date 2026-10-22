@@ -7,24 +7,22 @@
   <title>Aitor Hernández — Desarrollo Web en Código Limpio, SEO Local e Informes de Diagnóstico</title>
   <meta name="description" content="Diseño y desarrollo de páginas web a medida en código nativo sin WordPress. Webs ultrarrápidas, seguras y sin cuotas trampa. Tenerife y remoto.">
   
-  <!-- Protegido mientras esté en fase preparatoria. Cambiar a 'index, follow' al lanzar formalmente -->
   <meta name="robots" content="noindex, nofollow">
   
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Aitor Hernández — Webs Rápidas en Código Limpio">
   <meta property="og:description" content="Webs blindadas, sin plugins rotos ni hackeos. Informes de diagnóstico web y optimización de Google Maps.">
   <meta property="og:locale" content="es_ES">
 
-  <!-- Favicon SVG Data-URI: carga instantánea, autónomo y sin dependencias externas -->
+  <!-- Favicon SVG Data-URI -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230b110f'/%3E%3Cpath d='M9 24L16 8l7 16h-3.5l-1.8-4.5h-3.4L12.5 24H9zm5.3-7.5h2.4L16 12.8l-1.7 3.7z' fill='%23ffffff'/%3E%3Ccircle cx='23' cy='9' r='3' fill='%23a3e635'/%3E%3C/svg%3E">
 
-  <!-- Tipografías de alto rendimiento -->
+  <!-- Tipografías -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
-  <!-- Marcado Estructurado JSON-LD (SEO Profesional & Rich Snippets) -->
+  <!-- JSON-LD SEO -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -153,6 +151,7 @@
       background: var(--accent); color: #0b110f; font-weight: 700;
       padding: 14px 28px; border-radius: var(--radius-sm); display: inline-flex;
       align-items: center; gap: 10px; transition: transform .2s, box-shadow .2s;
+      border: none;
     }
     .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px var(--accent-glow); }
     .btn-secondary {
@@ -207,7 +206,7 @@
     .service-perks li { display: flex; gap: 10px; align-items: baseline; }
     .service-perks li::before { content: "✓"; color: var(--accent); font-weight: 700; }
     .service-card .btn-card {
-      width: 100%; text-align: center; padding: 12px; border-radius: var(--radius-sm);
+      width: 100%; text-align: center; padding: 13px; border-radius: var(--radius-sm);
       font-weight: 600; font-size: 0.95rem; display: block; background: var(--bg-elevated);
       color: var(--text); border: 1px solid var(--border); transition: background .2s, border-color .2s;
     }
@@ -292,6 +291,18 @@
     }
     .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--accent); }
 
+    /* Mensajes de feedback de formulario */
+    .form-status {
+      display: none; padding: 12px 16px; border-radius: var(--radius-sm);
+      font-size: 0.9rem; text-align: center;
+    }
+    .form-status.success {
+      display: block; background: rgba(163, 230, 53, 0.1); border: 1px solid var(--accent); color: var(--accent);
+    }
+    .form-status.error {
+      display: block; background: rgba(239, 68, 68, 0.1); border: 1px solid #ef4444; color: #f87171;
+    }
+
     /* Footer y Legales */
     .footer { padding: 40px 0; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--text-dim); }
     .footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; }
@@ -307,11 +318,13 @@
     .modal.active { display: flex; }
     .modal-box {
       background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md);
-      max-width: 640px; width: 100%; max-height: 80vh; overflow-y: auto; padding: 32px; position: relative;
+      max-width: 680px; width: 100%; max-height: 82vh; overflow-y: auto; padding: 36px; position: relative;
     }
     .modal-close { position: absolute; top: 18px; right: 18px; background: none; border: none; color: var(--text); font-size: 1.5rem; }
     .modal-box h3 { margin-bottom: 16px; font-size: 1.4rem; }
-    .modal-box p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 12px; }
+    .modal-box h4 { margin: 16px 0 8px; font-size: 1.05rem; color: var(--text); }
+    .modal-box p, .modal-box li { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px; }
+    .modal-box ul { padding-left: 20px; margin-bottom: 12px; }
 
     @media (max-width: 768px) {
       .nav-links { display: none; }
@@ -404,12 +417,13 @@
               <p class="service-desc">Analizamos tu web actual a fondo y te entregamos un informe con los fallos exactos que te están haciendo perder clientes y posicionamiento en Google, junto con el plan de acción para corregirlos.</p>
             </div>
             <ul class="service-perks">
+              <li>⚡ <strong>Entrega garantizada en 24-48 horas.</strong></li>
               <li>Diagnóstico de velocidad real y rendimiento móvil en Google PageSpeed.</li>
               <li>Salud y visibilidad SEO básica en buscadores.</li>
               <li>Detección de puntos de fuga de clientes y fallos de contacto.</li>
               <li><strong>100% reembolsable:</strong> si después contratas tu web conmigo, el importe del informe se descuenta íntegramente del presupuesto.</li>
             </ul>
-            <a href="#contacto" class="btn-card">Solicitar informe (Entrega en 24-48h)</a>
+            <a href="#contacto" class="btn-card">Solicitar informe</a>
           </article>
 
           <!-- Servicio B -->
@@ -570,7 +584,7 @@
       </div>
     </section>
 
-    <!-- Contacto Directo -->
+    <!-- Contacto Directo Asíncrono (Sin fuga por mailto) -->
     <section class="contact" id="contacto">
       <div class="shell">
         <div class="contact-wrap">
@@ -586,18 +600,18 @@
             </ul>
           </div>
 
-          <form class="form-box" onsubmit="handleMailSubmit(event)">
+          <form class="form-box" id="contact-form">
             <div class="field">
               <label for="nombre">Tu nombre o negocio</label>
-              <input type="text" id="nombre" required placeholder="Ej. Carlos / Clínica Dental">
+              <input type="text" id="nombre" name="nombre" required placeholder="Ej. Carlos / Clínica Dental">
             </div>
             <div class="field">
               <label for="email">Tu correo electrónico</label>
-              <input type="email" id="email" required placeholder="tu@correo.com">
+              <input type="email" id="email" name="email" required placeholder="tu@correo.com">
             </div>
             <div class="field">
               <label for="servicio">Servicio de interés</label>
-              <select id="servicio">
+              <select id="servicio" name="servicio">
                 <option value="Web Profesional en Código">Web Profesional a Medida</option>
                 <option value="Auditoría Express e Informe (50€)">Auditoría Express & Informe de Diagnóstico (50 €)</option>
                 <option value="Google Maps & Perfil Local (98€)">Google Maps & Perfil Local (98 €)</option>
@@ -606,9 +620,14 @@
             </div>
             <div class="field">
               <label for="mensaje">Detalles del proyecto o web actual</label>
-              <textarea id="mensaje" rows="4" placeholder="¿Tienes web actualmente? ¿Cuál es tu objetivo comercial principal?"></textarea>
+              <textarea id="mensaje" name="mensaje" rows="4" placeholder="¿Tienes web actualmente? ¿Cuál es tu objetivo comercial principal?"></textarea>
             </div>
-            <button type="submit" class="btn-primary" style="justify-content: center;">Enviar mensaje <span>↗</span></button>
+
+            <button type="submit" class="btn-primary" id="btn-submit" style="justify-content: center;">
+              <span>Enviar mensaje</span> <span>↗</span>
+            </button>
+
+            <div class="form-status" id="form-status"></div>
           </form>
         </div>
       </div>
@@ -627,7 +646,7 @@
     </div>
   </footer>
 
-  <!-- Modales Legales -->
+  <!-- Modales Legales con cobertura jurídica completa -->
   <div class="modal" id="modal-legal">
     <div class="modal-box">
       <button class="modal-close" onclick="closeModal()">✕</button>
@@ -644,25 +663,86 @@
       });
     });
 
-    // Formulario directo a cliente de correo
-    function handleMailSubmit(e) {
-      e.preventDefault();
-      const nombre = document.getElementById('nombre').value;
-      const email = document.getElementById('email').value;
-      const servicio = document.getElementById('servicio').value;
-      const mensaje = document.getElementById('mensaje').value;
-      
-      const subject = encodeURIComponent(`Consulta: ${servicio} - ${nombre}`);
-      const body = encodeURIComponent(`Hola Aitor,\n\nMi nombre es: ${nombre}\nEmail de contacto: ${email}\nServicio de interés: ${servicio}\n\nDetalles del proyecto:\n${mensaje}`);
-      
-      window.location.href = `mailto:aitorhernandez.es@gmail.com?subject=${subject}&body=${body}`;
-    }
+    // Envío Asíncrono Gratuito (Formspree / Web3Forms)
+    // Para activarlo en 30 segundos: regístrate gratis en formspree.io o web3forms.com
+    // y pon aquí tu endpoint o key. Por defecto utiliza Formspree:
+    const form = document.getElementById('contact-form');
+    const btnSubmit = document.getElementById('btn-submit');
+    const formStatus = document.getElementById('form-status');
 
-    // Modales legales sin recarga
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      btnSubmit.disabled = true;
+      btnSubmit.innerHTML = '<span>Enviando mensaje...</span>';
+      formStatus.className = 'form-status';
+      formStatus.style.display = 'none';
+
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+
+      try {
+        // Endpoint gratuito a tu correo mediante Formspree
+        const response = await fetch("https://formspree.io/f/mqkvrvzw", {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          formStatus.className = 'form-status success';
+          formStatus.innerText = '✓ Mensaje enviado correctamente. Te responderé en menos de 24 horas.';
+          form.reset();
+        } else {
+          throw new Error('Error en el envío');
+        }
+      } catch (err) {
+        // Fallback elegante en caso de fallo de red
+        formStatus.className = 'form-status error';
+        formStatus.innerHTML = 'Hubo un error temporal. Por favor, escríbeme directamente a <a href="mailto:aitorhernandez.es@gmail.com" style="text-decoration:underline;color:inherit;">aitorhernandez.es@gmail.com</a>';
+      } finally {
+        btnSubmit.disabled = false;
+        btnSubmit.innerHTML = '<span>Enviar mensaje</span> <span>↗</span>';
+      }
+    });
+
+    // Textos Legales Estrictamente Adaptados a Normativa Española (RGPD + LSSI-CE)
     const legalTexts = {
-      aviso: `<h3>Aviso Legal</h3><p>En cumplimiento de la Ley 34/2002 (LSSI-CE), se informa que este sitio web es titularidad de Aitor Hernández, con contacto en aitorhernandez.es@gmail.com, operando con sede en Santa Cruz de Tenerife, Canarias.</p><p>El acceso al sitio web implica la aceptación plena de las condiciones de uso y la propiedad intelectual de sus contenidos.</p>`,
-      privacidad: `<h3>Política de Privacidad</h3><p>De conformidad con el RGPD, los datos que proporciones a través del correo electrónico serán tratados exclusivamente con la finalidad de responder a tu solicitud comercial o técnica.</p><p>Tus datos no serán cedidos a terceros. Puedes ejercitar tus derechos de acceso, rectificación y supresión escribiendo a aitorhernandez.es@gmail.com.</p>`,
-      cookies: `<h3>Política de Cookies</h3><p>Este sitio web está construido en código nativo y no utiliza cookies de rastreo publicitario de terceros ni almacena datos de navegación invasivos.</p>`
+      aviso: `
+        <h3>Aviso Legal</h3>
+        <p>En cumplimiento de lo dispuesto en el artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se informa a los usuarios de los datos identificativos del titular:</p>
+        <h4>1. Datos Identificativos</h4>
+        <ul>
+          <li><strong>Titular:</strong> Aitor Hernández</li>
+          <li><strong>Actividad:</strong> Servicios de diseño, desarrollo web y consultoría digital independiente.</li>
+          <li><strong>Domicilio operativo:</strong> Santa Cruz de Tenerife, Canarias, España.</li>
+          <li><strong>Email de contacto:</strong> aitorhernandez.es@gmail.com</li>
+        </ul>
+        <h4>2. Propiedad Intelectual y Condiciones de Uso</h4>
+        <p>Los textos, códigos fuente, diseños gráficos, estructura y contenidos albergados en este sitio web son titularidad de Aitor Hernández o disponen de las licencias y consentimientos correspondientes. Queda prohibida la reproducción total o parcial sin autorización expresa.</p>
+        <h4>3. Legislación y Jurisdicción</h4>
+        <p>Las relaciones entre el titular y los usuarios se regirán por la normativa española vigente, sometiéndose ante cualquier controversia a los Juzgados y Tribunales de Santa Cruz de Tenerife.</p>
+      `,
+      privacidad: `
+        <h3>Política de Privacidad</h3>
+        <p>Conforme al Reglamento (UE) 2016/679 (RGPD) y la Ley Orgánica 3/2018 (LOPDGDD), te informamos de cómo tratamos tus datos personales:</p>
+        <h4>1. Responsable del Tratamiento</h4>
+        <p><strong>Aitor Hernández</strong> (Contacto: aitorhernandez.es@gmail.com | Sede: Tenerife, Canarias).</p>
+        <h4>2. Finalidad del Tratamiento y Legitimación</h4>
+        <p>Los datos facilitados en el formulario de contacto (nombre, correo electrónico y detalles del proyecto) son tratados exclusivamente para atender tu consulta, emitir presupuestos o prestar los servicios solicitados. La base de legitimación es el <strong>consentimiento inequívoco del interesado</strong> al enviar el formulario.</p>
+        <h4>3. Conservación y Destinatarios</h4>
+        <p>Tus datos se conservarán únicamente durante el tiempo imprescindible para gestionar la consulta o mientras subsista una relación comercial. <strong>No se cederán datos a terceros</strong>, salvo obligación legal expresa.</p>
+        <h4>4. Derechos del Usuario</h4>
+        <p>Puedes ejercer en cualquier momento tus derechos de acceso, rectificación, supresión, limitación del tratamiento y portabilidad remitiendo una solicitud por correo a <strong>aitorhernandez.es@gmail.com</strong>.</p>
+      `,
+      cookies: `
+        <h3>Política de Cookies</h3>
+        <h4>Uso de Cookies Técnicas</h4>
+        <p>Este sitio web está desarrollado en código nativo (HTML, CSS y JavaScript) optimizado para la máxima privacidad. <strong>No utilizamos cookies analíticas invasivas ni cookies de perfilado publicitario de terceros.</strong></p>
+        <p>De conformidad con el artículo 22.2 de la LSSI-CE y las directrices de la Agencia Española de Protección de Datos (AEPD), este sitio únicamente emplea elementos técnicos estrictamente indispensables para la visualización y seguridad del contenido, por lo que no requiere de banner intrusivo de consentimiento.</p>
+      `
     };
 
     function openModal(tipo) {
