@@ -32,6 +32,9 @@
         "name": "Aitor Hernández — Marca, Posicionamiento & Código Web Nativo",
         "description": "Desarrollo web en código nativo HTML/CSS/JS, consultoría de posicionamiento SEO y estrategia de marca orientada a ventas.",
         "url": "https://www.aitorhernandez.es",
+        "sameAs": [
+          "https://www.linkedin.com/in/aitorhdezdg/"
+        ],
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Santa Cruz de Tenerife",
@@ -41,7 +44,8 @@
         "priceRange": "€€",
         "founder": {
           "@type": "Person",
-          "name": "Aitor Hernández"
+          "name": "Aitor Hernández",
+          "sameAs": "https://www.linkedin.com/in/aitorhdezdg/"
         },
         "areaServed": ["España", "Canarias", "Global Remoto"]
       },
@@ -81,15 +85,22 @@
   <style>
     :root {
       --bg: #ffffff;
-      --bg-alt: #f7f7f8;
+      --bg-alt: #f8fafc;
       --bg-surface: #ffffff;
-      --text: #111111;
-      --text-muted: #555555;
-      --text-subtle: #888888;
-      --border: #e6e6e8;
-      --border-dark: #111111;
-      --accent: #111111;
-      --accent-pill: #f0f0f2;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --text-subtle: #94a3b8;
+      --border: #e2e8f0;
+      --border-dark: #0f172a;
+      
+      /* Acentos cromáticos de alta conversión UX/UI */
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --primary-subtle: #eff6ff;
+      --primary-border: #bfdbfe;
+      --accent-highlight: #10b981;
+      --accent-pill: #f1f5f9;
+      
       --radius-sm: 8px;
       --radius-md: 14px;
       --radius-lg: 24px;
@@ -118,32 +129,77 @@
     /* Header Marino Style */
     .header {
       position: sticky; top: 0; z-index: 100;
-      background: rgba(255, 255, 255, 0.92);
+      background: rgba(255, 255, 255, 0.94);
       backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
     }
     .nav-wrap { display: flex; justify-content: space-between; align-items: center; height: 76px; }
     .brand { font-family: var(--font-display); font-weight: 700; font-size: 1.25rem; letter-spacing: -0.03em; display: flex; align-items: center; gap: 12px; }
+    .brand-mark {
+      width: 10px; height: 10px; border-radius: 50%; background: var(--primary);
+      box-shadow: 0 0 12px rgba(37, 99, 235, 0.6);
+    }
     .status-badge {
       display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-main);
       font-size: 0.72rem; font-weight: 600; color: #166534; background: #dcfce7;
+      border: 1px solid #bbf7d0;
       padding: 4px 10px; border-radius: var(--radius-pill); text-transform: uppercase; letter-spacing: 0.04em;
     }
-    .status-dot { width: 6px; height: 6px; background: #22c55e; border-radius: 50%; }
-    .nav-links { display: flex; gap: 28px; align-items: center; }
+    .status-dot { width: 6px; height: 6px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 6px #22c55e; }
+    .nav-links { display: flex; gap: 26px; align-items: center; }
     .nav-links a { font-size: 0.92rem; font-weight: 500; color: var(--text-muted); transition: var(--transition); }
-    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover { color: var(--primary); }
     .btn-pill-header {
       background: var(--text); color: #ffffff; padding: 10px 22px;
       border-radius: var(--radius-pill); font-size: 0.88rem; font-weight: 600;
       transition: var(--transition); display: inline-flex; align-items: center; gap: 8px;
     }
-    .btn-pill-header:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-pill-header:hover { background: var(--primary); transform: translateY(-1px); box-shadow: 0 6px 18px rgba(37, 99, 235, 0.25); }
 
-    /* Ticker / Marquee */
+    /* Hero Section */
+    .hero { padding: 90px 0 60px; position: relative; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-display);
+      font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--primary); background: var(--primary-subtle); border: 1px solid var(--primary-border);
+      padding: 6px 14px; border-radius: var(--radius-pill); margin-bottom: 24px; font-weight: 700;
+    }
+    .hero h1 {
+      font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 4.8rem);
+      font-weight: 700; line-height: 1.08; letter-spacing: -0.04em; max-width: 1050px;
+      margin-bottom: 28px; color: var(--text);
+    }
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(120deg, #1d4ed8 0%, #2563eb 50%, #059669 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p.lead {
+      font-size: clamp(1.1rem, 2vw, 1.35rem); color: var(--text-muted); max-width: 760px;
+      line-height: 1.55; margin-bottom: 42px; font-weight: 400;
+    }
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+    .btn-pill-primary {
+      background: var(--primary); color: #ffffff; font-weight: 600;
+      padding: 16px 34px; border-radius: var(--radius-pill); display: inline-flex;
+      align-items: center; gap: 10px; font-size: 0.98rem; transition: var(--transition);
+      box-shadow: 0 10px 24px rgba(37, 99, 235, 0.22);
+    }
+    .btn-pill-primary:hover { background: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 14px 28px rgba(37, 99, 235, 0.32); }
+    .btn-pill-secondary {
+      background: var(--accent-pill); color: var(--text); font-weight: 600;
+      padding: 16px 30px; border-radius: var(--radius-pill); font-size: 0.98rem;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+    .btn-pill-secondary:hover { background: #e2e8f0; color: var(--primary); border-color: var(--primary-border); }
+
+    /* Ticker / Marquee Reubicado */
     .ticker-wrap {
-      background: var(--bg-alt); border-bottom: 1px solid var(--border);
-      overflow: hidden; white-space: nowrap; padding: 14px 0;
+      background: linear-gradient(90deg, #f8fafc 0%, #eff6ff 50%, #f8fafc 100%);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      overflow: hidden; white-space: nowrap; padding: 16px 0; margin: 40px 0 0;
     }
     .ticker-track {
       display: inline-flex; animation: marquee 32s linear infinite;
@@ -153,48 +209,18 @@
       text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted);
       padding: 0 28px; display: inline-flex; align-items: center; gap: 28px;
     }
-    .ticker-item::after { content: "•"; color: var(--text-subtle); font-size: 1.1rem; }
+    .ticker-item span.accent-dot { color: var(--primary); font-size: 1.1rem; }
     @keyframes marquee {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
-
-    /* Hero Section */
-    .hero { padding: 90px 0 70px; }
-    .hero-eyebrow {
-      display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-display);
-      font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.1em;
-      color: var(--text-subtle); margin-bottom: 24px; font-weight: 600;
-    }
-    .hero h1 {
-      font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 4.8rem);
-      font-weight: 700; line-height: 1.08; letter-spacing: -0.04em; max-width: 1050px;
-      margin-bottom: 28px; color: var(--text);
-    }
-    .hero p.lead {
-      font-size: clamp(1.1rem, 2vw, 1.35rem); color: var(--text-muted); max-width: 760px;
-      line-height: 1.55; margin-bottom: 42px; font-weight: 400;
-    }
-    .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
-    .btn-pill-primary {
-      background: var(--text); color: #ffffff; font-weight: 600;
-      padding: 16px 34px; border-radius: var(--radius-pill); display: inline-flex;
-      align-items: center; gap: 10px; font-size: 0.98rem; transition: var(--transition);
-    }
-    .btn-pill-primary:hover { opacity: 0.88; transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,0.08); }
-    .btn-pill-secondary {
-      background: var(--accent-pill); color: var(--text); font-weight: 600;
-      padding: 16px 30px; border-radius: var(--radius-pill); font-size: 0.98rem;
-      transition: var(--transition);
-    }
-    .btn-pill-secondary:hover { background: #e5e5e8; }
 
     /* Section Typography & Header */
     .section-wrap { padding: 96px 0; border-top: 1px solid var(--border); }
     .section-head { margin-bottom: 56px; }
     .section-tag {
       font-family: var(--font-display); font-size: 0.8rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-subtle);
+      text-transform: uppercase; letter-spacing: 0.12em; color: var(--primary);
       margin-bottom: 12px; display: block;
     }
     .section-head h2 {
@@ -209,15 +235,16 @@
       border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 40px;
       background: var(--bg-surface); transition: var(--transition);
     }
-    .vs-box:hover { border-color: var(--border-dark); }
-    .vs-box.alt { background: var(--bg-alt); border-color: transparent; }
+    .vs-box:hover { border-color: var(--primary); box-shadow: 0 16px 32px rgba(37, 99, 235, 0.05); }
+    .vs-box.alt { background: #fef2f2; border-color: #fee2e2; }
+    .vs-box.positive-box { background: linear-gradient(180deg, #ffffff 0%, #f0fdf4 100%); border-color: #bbf7d0; }
     .vs-header { margin-bottom: 24px; }
     .vs-pill {
       font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
       padding: 6px 14px; border-radius: var(--radius-pill); display: inline-block; margin-bottom: 16px;
     }
-    .vs-pill.warning { background: #fee2e2; color: #991b1b; }
-    .vs-pill.positive { background: #111111; color: #ffffff; }
+    .vs-pill.warning { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+    .vs-pill.positive { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
     .vs-box h3 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.02em; }
     .vs-box p.desc { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 24px; }
     .vs-list { list-style: none; display: flex; flex-direction: column; gap: 14px; font-size: 0.94rem; }
@@ -225,7 +252,7 @@
     .vs-list li strong { color: var(--text); }
     .vs-list li span.bullet { font-weight: 700; flex-shrink: 0; }
     .vs-box.alt li span.bullet { color: #dc2626; }
-    .vs-box:not(.alt) li span.bullet { color: #111111; }
+    .vs-box.positive-box li span.bullet { color: #16a34a; }
 
     /* 02 / Metodología & Fases */
     .process-timeline {
@@ -236,12 +263,18 @@
       background: var(--bg-surface); border: 1px solid var(--border);
       border-radius: var(--radius-lg); padding: 36px 30px; display: flex;
       flex-direction: column; justify-content: space-between; transition: var(--transition);
+      position: relative; overflow: hidden;
     }
-    .process-step:hover { border-color: var(--border-dark); transform: translateY(-3px); }
+    .process-step::before {
+      content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--border); transition: var(--transition);
+    }
+    .process-step:hover { border-color: var(--primary-border); transform: translateY(-4px); box-shadow: 0 16px 32px rgba(37, 99, 235, 0.06); }
+    .process-step:hover::before { background: var(--primary); }
     .process-header { margin-bottom: 20px; }
     .step-index {
       font-family: var(--font-display); font-size: 2.2rem; font-weight: 700;
-      color: var(--text); letter-spacing: -0.04em; margin-bottom: 14px;
+      color: var(--primary); letter-spacing: -0.04em; margin-bottom: 14px;
     }
     .process-step h3 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.02em; }
     .process-step p { font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; }
@@ -252,37 +285,51 @@
       background: var(--bg-surface); border: 1px solid var(--border);
       border-radius: var(--radius-lg); padding: 36px 28px; display: flex;
       flex-direction: column; justify-content: space-between; transition: var(--transition);
+      position: relative;
     }
-    .service-card:hover { border-color: var(--border-dark); transform: translateY(-4px); box-shadow: 0 16px 32px rgba(0,0,0,0.04); }
-    .service-card.highlight { background: var(--bg-alt); border-color: var(--border-dark); }
-    .card-meta { font-family: var(--font-display); font-size: 0.76rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-subtle); margin-bottom: 12px; }
+    .service-card:hover { border-color: var(--primary); transform: translateY(-4px); box-shadow: 0 18px 36px rgba(37, 99, 235, 0.08); }
+    .service-card.highlight {
+      background: linear-gradient(180deg, #ffffff 0%, #eff6ff 100%);
+      border-color: var(--primary); box-shadow: 0 12px 30px rgba(37, 99, 235, 0.1);
+    }
+    .badge-featured {
+      position: absolute; top: -11px; right: 28px; background: var(--primary); color: #ffffff;
+      font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+      padding: 4px 12px; border-radius: var(--radius-pill);
+    }
+    .card-meta {
+      font-family: var(--font-display); font-size: 0.76rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary); margin-bottom: 12px;
+    }
     .service-card h3 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
     .service-price-block { margin: 16px 0 20px; border-bottom: 1px solid var(--border); padding-bottom: 18px; }
-    .price-value { font-family: var(--font-display); font-size: 2.4rem; font-weight: 700; letter-spacing: -0.04em; line-height: 1; }
+    .price-value { font-family: var(--font-display); font-size: 2.4rem; font-weight: 700; letter-spacing: -0.04em; line-height: 1; color: var(--text); }
     .price-period { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; margin-top: 4px; }
     .service-desc { font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 24px; }
     .service-features { list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 0.88rem; margin-bottom: 32px; }
     .service-features li { display: flex; gap: 10px; align-items: baseline; color: var(--text-muted); }
     .service-features li strong { color: var(--text); }
-    .service-features li::before { content: "—"; color: var(--text); font-weight: 700; flex-shrink: 0; }
+    .service-features li::before { content: "✓"; color: var(--primary); font-weight: 800; flex-shrink: 0; }
     .btn-card-action {
       background: var(--accent-pill); color: var(--text); padding: 13px 20px;
       border-radius: var(--radius-pill); font-weight: 600; font-size: 0.9rem;
       text-align: center; transition: var(--transition); width: 100%; display: block;
+      border: 1px solid var(--border);
     }
-    .service-card.highlight .btn-card-action { background: var(--text); color: #ffffff; }
-    .btn-card-action:hover { background: var(--text); color: #ffffff; }
+    .service-card.highlight .btn-card-action { background: var(--primary); color: #ffffff; border-color: var(--primary); }
+    .btn-card-action:hover { background: var(--primary); color: #ffffff; border-color: var(--primary); transform: translateY(-1px); }
 
     /* Barra de Infraestructura y Cambios */
     .infrastructure-bar {
-      margin-top: 24px; background: var(--bg-alt); border-radius: var(--radius-lg);
+      margin-top: 24px; background: linear-gradient(90deg, #f8fafc 0%, #eff6ff 100%);
+      border: 1px solid var(--primary-border); border-radius: var(--radius-lg);
       padding: 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px;
     }
     .infra-item h4 {
       font-family: var(--font-display); font-size: 1.15rem; font-weight: 700;
       display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px;
     }
-    .infra-item h4 span.fee { font-size: 1.05rem; color: var(--text); font-weight: 700; }
+    .infra-item h4 span.fee { font-size: 1.05rem; color: var(--primary); font-weight: 700; }
     .infra-item p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
 
     /* 04 / Proyectos Reales */
@@ -293,102 +340,151 @@
       flex-direction: column; justify-content: space-between; transition: var(--transition);
       position: relative; overflow: hidden;
     }
-    .project-card:hover { border-color: var(--border-dark); transform: translateY(-4px); box-shadow: 0 16px 32px rgba(0,0,0,0.05); }
-    .project-category { font-family: var(--font-display); font-size: 0.74rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-subtle); margin-bottom: 14px; }
+    .project-card:hover { border-color: var(--primary); transform: translateY(-4px); box-shadow: 0 16px 32px rgba(37, 99, 235, 0.08); }
+    .project-category {
+      font-family: var(--font-display); font-size: 0.74rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em; color: var(--primary); margin-bottom: 14px;
+    }
     .project-card h3 { font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 10px; }
     .project-card p.summary { font-size: 0.94rem; color: var(--text-muted); margin-bottom: 24px; line-height: 1.55; }
     .project-tag {
       font-size: 0.76rem; font-weight: 600; padding: 6px 12px;
-      background: var(--bg-alt); border-radius: var(--radius-pill);
-      display: inline-block; color: var(--text); margin-bottom: 24px;
+      background: var(--primary-subtle); border: 1px solid var(--primary-border);
+      border-radius: var(--radius-pill); display: inline-block; color: var(--primary); margin-bottom: 24px;
     }
     .project-link {
       font-weight: 600; font-size: 0.92rem; color: var(--text);
       display: inline-flex; align-items: center; gap: 8px; transition: var(--transition);
     }
-    .project-link:hover { transform: translateX(3px); }
+    .project-link:hover { color: var(--primary); transform: translateX(3px); }
     .project-card.cta-box {
-      background: var(--text); color: #ffffff; display: flex;
-      flex-direction: column; justify-content: center; align-items: flex-start;
-      border-color: var(--text);
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #ffffff; display: flex; flex-direction: column; justify-content: center;
+      align-items: flex-start; border-color: #334155;
     }
     .project-card.cta-box h3 { color: #ffffff; font-size: 1.8rem; margin-bottom: 12px; }
-    .project-card.cta-box p { color: #a1a1aa; font-size: 0.95rem; margin-bottom: 28px; max-width: 360px; }
-    .project-card.cta-box .btn-pill-primary { background: #ffffff; color: var(--text); }
+    .project-card.cta-box p { color: #cbd5e1; font-size: 0.95rem; margin-bottom: 28px; max-width: 360px; }
+    .project-card.cta-box .btn-pill-primary { background: var(--primary); color: #ffffff; }
 
-    /* 05 / FAQ Acordeón */
+    /* 05 / Sección Sobre Mí & Autoridad */
+    .about-section {
+      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+      border-radius: var(--radius-lg); border: 1px solid var(--border);
+      padding: clamp(40px, 5vw, 70px); margin: 20px 0;
+    }
+    .about-grid { display: grid; grid-template-columns: 1fr 1.25fr; gap: 50px; align-items: center; }
+    .about-card-profile {
+      background: #ffffff; border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: 36px 32px; box-shadow: 0 12px 28px rgba(0,0,0,0.03);
+    }
+    .about-avatar-badge {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: linear-gradient(135deg, #2563eb 0%, #059669 100%);
+      display: flex; align-items: center; justify-content: center;
+      color: #ffffff; font-family: var(--font-display); font-size: 1.7rem; font-weight: 700;
+      margin-bottom: 20px; box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+    }
+    .about-card-profile h3 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; margin-bottom: 6px; }
+    .about-card-profile p.role { font-size: 0.9rem; color: var(--primary); font-weight: 600; margin-bottom: 18px; }
+    .about-micro-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; border-top: 1px solid var(--border); padding-top: 18px; margin-top: 18px; }
+    .stat-box { font-family: var(--font-display); }
+    .stat-number { font-size: 1.5rem; font-weight: 700; color: var(--text); }
+    .stat-label { font-size: 0.78rem; color: var(--text-muted); font-family: var(--font-main); }
+    .about-copy h2 {
+      font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 2.7rem);
+      font-weight: 700; line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 20px;
+    }
+    .about-copy p { font-size: 1.02rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 16px; }
+    .about-pillars { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-top: 24px; font-size: 0.94rem; }
+    .about-pillars li { display: flex; gap: 12px; align-items: flex-start; }
+    .about-pillars li strong { color: var(--text); }
+    .about-pillars li span.icon-check {
+      background: var(--primary-subtle); color: var(--primary); border: 1px solid var(--primary-border);
+      width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; font-weight: 800; flex-shrink: 0; margin-top: 2px;
+    }
+
+    /* 06 / FAQ Acordeón */
     .faq-container { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
     .faq-item {
       border: 1px solid var(--border); border-radius: var(--radius-md);
       overflow: hidden; background: var(--bg-surface); transition: var(--transition);
     }
-    .faq-item:hover { border-color: var(--border-dark); }
+    .faq-item:hover { border-color: var(--primary); }
     .faq-question {
       width: 100%; text-align: left; padding: 24px 28px; font-family: var(--font-display);
       font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em; display: flex;
       justify-content: space-between; align-items: center; gap: 18px; color: var(--text);
     }
-    .faq-question span.icon { font-size: 1.3rem; transition: transform 0.25s ease; font-weight: 400; }
-    .faq-item.open .faq-question span.icon { transform: rotate(45deg); }
+    .faq-question span.icon { font-size: 1.3rem; transition: transform 0.25s ease; font-weight: 400; color: var(--primary); }
+    .faq-item.open .faq-question span.icon { transform: rotate(45deg); color: var(--text); }
     .faq-answer {
       display: none; padding: 0 28px 24px; color: var(--text-muted);
       font-size: 0.98rem; line-height: 1.65;
     }
     .faq-item.open .faq-answer { display: block; }
 
-    /* 06 / Contacto Marino Style */
+    /* 07 / Contacto Marino Style Refinado */
     .contact-section {
-      background: #111111; color: #ffffff; border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, #090d16 0%, #0f172a 100%);
+      color: #ffffff; border-radius: var(--radius-lg);
       padding: clamp(40px, 6vw, 80px); margin: 40px 0 60px;
+      border: 1px solid #1e293b;
     }
     .contact-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 56px; align-items: flex-start; }
     .contact-copy h2 {
       font-family: var(--font-display); font-size: clamp(2.2rem, 4vw, 3.4rem);
       font-weight: 700; line-height: 1.1; letter-spacing: -0.04em; margin-bottom: 20px;
     }
-    .contact-copy p { color: #a1a1aa; font-size: 1.05rem; line-height: 1.6; margin-bottom: 32px; }
-    .direct-email {
-      font-family: var(--font-display); font-size: 1.25rem; font-weight: 600;
-      color: #ffffff; text-decoration: underline; text-underline-offset: 6px;
-      display: inline-block; margin-bottom: 28px;
+    .contact-copy p { color: #94a3b8; font-size: 1.05rem; line-height: 1.6; margin-bottom: 30px; }
+    .contact-direct-links { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+    .direct-link-pill {
+      font-family: var(--font-display); font-size: 1.15rem; font-weight: 600;
+      color: #ffffff; display: inline-flex; align-items: center; gap: 10px;
+      transition: var(--transition);
     }
-    .contact-perks { list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 0.92rem; color: #d4d4d8; }
-    .contact-perks li::before { content: "•"; color: #ffffff; margin-right: 10px; font-weight: 700; }
+    .direct-link-pill:hover { color: #60a5fa; transform: translateX(3px); }
+    .contact-perks { list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 0.92rem; color: #cbd5e1; }
+    .contact-perks li::before { content: "•"; color: #3b82f6; margin-right: 10px; font-weight: 800; font-size: 1.2rem; }
 
     /* Formulario */
     .form-container { display: flex; flex-direction: column; gap: 18px; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     .form-group { display: flex; flex-direction: column; gap: 8px; }
-    .form-group label { font-size: 0.85rem; font-weight: 600; color: #d4d4d8; }
+    .form-group label { font-size: 0.85rem; font-weight: 600; color: #cbd5e1; }
     .form-group input, .form-group select, .form-group textarea {
-      background: #1c1c1f; border: 1px solid #2e2e33; border-radius: var(--radius-sm);
+      background: #172033; border: 1px solid #28354f; border-radius: var(--radius-sm);
       padding: 14px 16px; color: #ffffff; font-family: inherit; font-size: 0.95rem;
       transition: var(--transition);
     }
     .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-      outline: none; border-color: #ffffff; background: #242429;
+      outline: none; border-color: var(--primary); background: #1e2b45;
     }
-    .form-group select option { background: #1c1c1f; color: #ffffff; }
+    .form-group select option { background: #0f172a; color: #ffffff; }
     .legal-consent { display: flex; gap: 12px; align-items: flex-start; margin-top: 6px; }
-    .legal-consent input[type="checkbox"] { margin-top: 4px; accent-color: #ffffff; cursor: pointer; width: 16px; height: 16px; }
-    .legal-consent label { font-size: 0.82rem; color: #a1a1aa; line-height: 1.45; cursor: pointer; }
-    .legal-consent button { color: #ffffff; text-decoration: underline; font-size: inherit; }
+    .legal-consent input[type="checkbox"] { margin-top: 4px; accent-color: var(--primary); cursor: pointer; width: 16px; height: 16px; }
+    .legal-consent label { font-size: 0.82rem; color: #94a3b8; line-height: 1.45; cursor: pointer; }
+    .legal-consent button { color: #60a5fa; text-decoration: underline; font-size: inherit; }
     .btn-submit {
-      background: #ffffff; color: #111111; font-weight: 700; font-size: 1rem;
+      background: var(--primary); color: #ffffff; font-weight: 700; font-size: 1rem;
       padding: 16px 32px; border-radius: var(--radius-pill); transition: var(--transition);
       display: inline-flex; justify-content: center; align-items: center; gap: 10px;
     }
-    .btn-submit:hover { opacity: 0.9; transform: translateY(-2px); }
+    .btn-submit:hover { background: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 10px 24px rgba(37, 99, 235, 0.4); }
     .form-status { display: none; padding: 14px; border-radius: var(--radius-sm); font-size: 0.92rem; text-align: center; }
     .form-status.success { display: block; background: rgba(34, 197, 94, 0.15); border: 1px solid #22c55e; color: #4ade80; }
     .form-status.error { display: block; background: rgba(239, 68, 68, 0.15); border: 1px solid #ef4444; color: #f87171; }
 
     /* Footer */
-    .footer { padding: 48px 0; border-top: 1px solid var(--border); font-size: 0.9rem; color: var(--text-subtle); }
+    .footer { padding: 48px 0; border-top: 1px solid var(--border); font-size: 0.9rem; color: var(--text-subtle); background: #ffffff; }
     .footer-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
-    .footer-links { display: flex; gap: 20px; }
-    .footer-links button { color: var(--text-muted); font-size: 0.88rem; transition: var(--transition); }
-    .footer-links button:hover { color: var(--text); text-decoration: underline; }
+    .footer-links { display: flex; gap: 20px; align-items: center; }
+    .footer-links button, .footer-links a { color: var(--text-muted); font-size: 0.88rem; transition: var(--transition); display: inline-flex; align-items: center; gap: 6px; }
+    .footer-links button:hover, .footer-links a:hover { color: var(--primary); text-decoration: underline; }
+    .social-linkedin {
+      font-weight: 600; color: #0a66c2 !important; background: #eff6ff; padding: 6px 14px; border-radius: var(--radius-pill); border: 1px solid #bfdbfe;
+    }
+    .social-linkedin:hover { background: #0a66c2; color: #ffffff !important; text-decoration: none !important; }
 
     /* Modales Legales */
     .modal-overlay {
@@ -408,14 +504,14 @@
 
     /* Responsive Queries */
     @media (max-width: 900px) {
-      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .contact-grid, .about-grid { grid-template-columns: 1fr; gap: 40px; }
       .form-row { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
       .nav-links { display: none; }
-      .hero { padding: 60px 0 40px; }
+      .hero { padding: 60px 0 30px; }
       .section-wrap { padding: 64px 0; }
-      .vs-box, .process-step, .service-card, .project-card { padding: 28px 24px; }
+      .vs-box, .process-step, .service-card, .project-card, .about-section { padding: 28px 24px; }
     }
   </style>
 </head>
@@ -425,6 +521,7 @@
   <header class="header">
     <div class="shell nav-wrap">
       <a href="#" class="brand">
+        <span class="brand-mark"></span>
         <span>Aitor Hernández</span>
         <span class="status-badge"><span class="status-dot"></span> Disponible</span>
       </a>
@@ -433,6 +530,7 @@
         <a href="#metodologia">Metodología</a>
         <a href="#servicios">Servicios & Tarifas</a>
         <a href="#portfolio">Proyectos</a>
+        <a href="#sobre-mi">Sobre mí</a>
         <a href="#faq">Preguntas</a>
       </nav>
       <a href="#contacto" class="btn-pill-header">
@@ -442,35 +540,35 @@
     </div>
   </header>
 
-  <!-- Cinta Ticker Infinita -->
-  <div class="ticker-wrap" aria-hidden="true">
-    <div class="ticker-track">
-      <div class="ticker-item">+100 Proyectos Digitales</div>
-      <div class="ticker-item">Código Nativo sin Plugins</div>
-      <div class="ticker-item">Carga Inmediata en Móviles</div>
-      <div class="ticker-item">SEO Técnico y Visibilidad</div>
-      <div class="ticker-item">Propiedad 100% Tuya</div>
-      <div class="ticker-item">Alojamiento de Alto Rendimiento</div>
-      <!-- Duplicado para ciclo continuo -->
-      <div class="ticker-item">+100 Proyectos Digitales</div>
-      <div class="ticker-item">Código Nativo sin Plugins</div>
-      <div class="ticker-item">Carga Inmediata en Móviles</div>
-      <div class="ticker-item">SEO Técnico y Visibilidad</div>
-      <div class="ticker-item">Propiedad 100% Tuya</div>
-      <div class="ticker-item">Alojamiento de Alto Rendimiento</div>
-    </div>
-  </div>
-
   <main>
     <!-- Hero Principal Editorial -->
     <section class="hero">
       <div class="shell">
-        <span class="hero-eyebrow">Marca • Posicionamiento • Desarrollo Web Puro</span>
+        <span class="hero-eyebrow">Marca • Posicionamiento • Desarrollo Web Nativo</span>
         <h1>Construyo marcas y activos web que generan <em>autoridad y ventas reales</em>.</h1>
         <p class="lead">Desarrollo soluciones digitales en código nativo de alta velocidad, optimizadas para Google y pensadas para negocios que buscan proyectar solidez sin depender de parches técnicos ni cuotas forzosas.</p>
         <div class="hero-ctas">
           <a href="#contacto" class="btn-pill-primary">Pedir presupuesto de mi web <span>→</span></a>
           <a href="#servicios" class="btn-pill-secondary">Ver servicios y tarifas</a>
+        </div>
+      </div>
+
+      <!-- Cinta Ticker Infinita Reubicada Estratégicamente -->
+      <div class="ticker-wrap" aria-hidden="true">
+        <div class="ticker-track">
+          <div class="ticker-item">+100 Proyectos Digitales <span class="accent-dot">•</span></div>
+          <div class="ticker-item">Código Nativo sin Plugins <span class="accent-dot">•</span></div>
+          <div class="ticker-item">Carga Inmediata en Móviles <span class="accent-dot">•</span></div>
+          <div class="ticker-item">SEO Técnico y Visibilidad <span class="accent-dot">•</span></div>
+          <div class="ticker-item">Propiedad 100% Tuya <span class="accent-dot">•</span></div>
+          <div class="ticker-item">Alojamiento de Alto Rendimiento <span class="accent-dot">•</span></div>
+          <!-- Duplicado para ciclo continuo -->
+          <div class="ticker-item">+100 Proyectos Digitales <span class="accent-dot">•</span></div>
+          <div class="ticker-item">Código Nativo sin Plugins <span class="accent-dot">•</span></div>
+          <div class="ticker-item">Carga Inmediata en Móviles <span class="accent-dot">•</span></div>
+          <div class="ticker-item">SEO Técnico y Visibilidad <span class="accent-dot">•</span></div>
+          <div class="ticker-item">Propiedad 100% Tuya <span class="accent-dot">•</span></div>
+          <div class="ticker-item">Alojamiento de Alto Rendimiento <span class="accent-dot">•</span></div>
         </div>
       </div>
     </section>
@@ -499,18 +597,18 @@
             </ul>
           </div>
 
-          <div class="vs-box">
+          <div class="vs-box positive-box">
             <div class="vs-header">
               <span class="vs-pill positive">Mi Estándar (Código Nativo HTML/CSS/JS)</span>
               <h3>Rápido, blindado y 100% tuyo</h3>
               <p class="desc">Ingeniería web directa, ligera y orientada a resultados comerciales.</p>
             </div>
             <ul class="vs-list">
-              <li><span class="bullet">—</span> <div><strong>Inmune a hackeos PHP:</strong> sin bases de datos expuestas ni librerías de terceros que puedan comprometerse.</div></li>
-              <li><span class="bullet">—</span> <div><strong>Carga prácticamente inmediata:</strong> tus visitantes acceden al contenido al instante, sin pantallas de espera ni fricciones.</div></li>
-              <li><span class="bullet">—</span> <div><strong>Altos resultados en rendimiento:</strong> métricas sobresalientes en las auditorías oficiales de Google (Core Web Vitals).</div></li>
-              <li><span class="bullet">—</span> <div><strong>Cero mantenimiento forzoso:</strong> tu web funciona hoy y seguirá funcionando impecablemente durante años.</div></li>
-              <li><span class="bullet">—</span> <div><strong>Alojamiento ultra económico:</strong> solo 25 €/año con dominio y certificado SSL activo.</div></li>
+              <li><span class="bullet">✓</span> <div><strong>Inmune a hackeos PHP:</strong> sin bases de datos expuestas ni librerías de terceros que puedan comprometerse.</div></li>
+              <li><span class="bullet">✓</span> <div><strong>Carga prácticamente inmediata:</strong> tus visitantes acceden al contenido al instante, sin pantallas de espera ni fricciones.</div></li>
+              <li><span class="bullet">✓</span> <div><strong>Altos resultados en rendimiento:</strong> métricas sobresalientes en las auditorías oficiales de Google (Core Web Vitals).</div></li>
+              <li><span class="bullet">✓</span> <div><strong>Cero mantenimiento forzoso:</strong> tu web funciona hoy y seguirá funcionando impecablemente durante años.</div></li>
+              <li><span class="bullet">✓</span> <div><strong>Alojamiento ultra económico:</strong> solo 25 €/año con dominio y certificado SSL activo.</div></li>
             </ul>
           </div>
         </div>
@@ -616,6 +714,7 @@
 
           <!-- Servicio C -->
           <article class="service-card highlight">
+            <span class="badge-featured">Más Demandado</span>
             <div>
               <div class="card-meta">SERVICIO C • AUTORIDAD DE MARCA</div>
               <h3>Web Corporativa a Medida</h3>
@@ -733,7 +832,7 @@
           <!-- 6ª Tarjeta CTA -->
           <article class="project-card cta-box">
             <div>
-              <div class="project-category" style="color: #a1a1aa;">TU PROYECTO DIGITAL</div>
+              <div class="project-category" style="color: #93c5fd;">TU PROYECTO DIGITAL</div>
               <h3>¿Tu negocio aquí?</h3>
               <p>Construyamos una presencia digital rápida, blindada contra fallos y pensada para convertir visitas en clientes reales.</p>
             </div>
@@ -743,11 +842,59 @@
       </div>
     </section>
 
-    <!-- 05 / Preguntas Frecuentes -->
+    <!-- 05 / Sección Sobre Mí & Filosofía de Trabajo -->
+    <section class="shell" id="sobre-mi">
+      <div class="about-section">
+        <div class="about-grid">
+          <div class="about-card-profile">
+            <div class="about-avatar-badge">AH</div>
+            <h3>Aitor Hernández</h3>
+            <p class="role">Especialista en Marca, Posicionamiento & Código Nativo</p>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.55;">
+              Operando desde Santa Cruz de Tenerife para clientes y marcas en toda España y remoto.
+            </p>
+            <div class="about-micro-stats">
+              <div class="stat-box">
+                <div class="stat-number">+100</div>
+                <div class="stat-label">Proyectos ejecutados</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-number">1 a 1</div>
+                <div class="stat-label">Trato sin intermediarios</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-copy">
+            <span class="section-tag">05 / Sobre Mí & Filosofía</span>
+            <h2>Artesanía digital con mentalidad de negocio</h2>
+            <p>Llevo más de una década creando activos digitales y posicionando marcas en internet. No creo en las agencias infladas donde hablas con un comercial para que luego tu proyecto lo deleguen en becarios con plantillas sobrecargadas.</p>
+            <p>Mi propuesta es directa: <strong>trabajo personalmente en tu proyecto de principio a fin</strong>. Programo en código limpio porque valoro tu tranquilidad y el tiempo de tus clientes. Si una web no carga al instante o se rompe al actualizarla, no es una inversión, es un problema.</p>
+            
+            <ul class="about-pillars">
+              <li>
+                <span class="icon-check">✓</span>
+                <div><strong>Cero humo técnico:</strong> Te hablo claro sobre lo que tu negocio necesita para captar clientes, sin tecnicismos vacíos.</div>
+              </li>
+              <li>
+                <span class="icon-check">✓</span>
+                <div><strong>Independencia total:</strong> Tu web es tuya al 100%, sin ataduras ni cuotas obligatorias por mantenerla encendida.</div>
+              </li>
+              <li>
+                <span class="icon-check">✓</span>
+                <div><strong>Compromiso en plazos:</strong> Pocos clientes simultáneos para garantizar entregas en los días acordados.</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 / Preguntas Frecuentes -->
     <section class="section-wrap" id="faq">
       <div class="shell">
         <div class="section-head" style="text-align: center; max-width: 680px; margin-left: auto; margin-right: auto;">
-          <span class="section-tag">05 / Transparencia</span>
+          <span class="section-tag">06 / Transparencia</span>
           <h2>Preguntas frecuentes</h2>
           <p>Respuestas claras a las dudas habituales antes de comenzar a trabajar juntos.</p>
         </div>
@@ -798,15 +945,26 @@
       </div>
     </section>
 
-    <!-- 06 / Contacto Marino Style -->
+    <!-- 07 / Contacto Marino Style Refinado -->
     <section class="shell" id="contacto">
       <div class="contact-section">
         <div class="contact-grid">
           <div class="contact-copy">
-            <span class="section-tag" style="color: #a1a1aa;">06 / Hablemos</span>
+            <span class="section-tag" style="color: #60a5fa;">07 / Hablemos</span>
             <h2>Cuéntame qué necesitas solucionar</h2>
             <p>Escríbeme detallando tu situación actual y el servicio que te interesa. Te responderé personalmente en menos de 24 horas con fecha disponible.</p>
-            <a href="mailto:aitorhernandez.es@gmail.com" class="direct-email">aitorhernandez.es@gmail.com ↗</a>
+            
+            <div class="contact-direct-links">
+              <a href="mailto:aitorhernandez.es@gmail.com" class="direct-link-pill">
+                <span>aitorhernandez.es@gmail.com</span>
+                <span>↗</span>
+              </a>
+              <a href="https://www.linkedin.com/in/aitorhdezdg/" target="_blank" rel="noopener noreferrer" class="direct-link-pill" style="color: #93c5fd; font-size: 1rem;">
+                <span>Conectar en LinkedIn</span>
+                <span>↗</span>
+              </a>
+            </div>
+
             <ul class="contact-perks">
               <li>Respuesta personalizada en menos de 24 horas.</li>
               <li>Presupuesto cerrado sin costes ocultos.</li>
@@ -857,7 +1015,7 @@
               <span>→</span>
             </button>
 
-            <p style="font-size: 0.75rem; color: #71717a; line-height: 1.4; margin-top: 4px;">
+            <p style="font-size: 0.75rem; color: #94a3b8; line-height: 1.4; margin-top: 4px;">
               <strong>Responsable:</strong> Aitor Hernández • <strong>Finalidad:</strong> Gestión y respuesta a consultas comerciales • <strong>Derechos:</strong> Acceso, rectificación y supresión vía aitorhernandez.es@gmail.com.
             </p>
 
@@ -868,11 +1026,14 @@
     </section>
   </main>
 
-  <!-- Footer Minimalista -->
+  <!-- Footer Minimalista con LinkedIn -->
   <footer class="footer">
     <div class="shell footer-content">
       <p>© 2026 Aitor Hernández • Código limpio, posicionamiento y estrategia de marca.</p>
       <div class="footer-links">
+        <a href="https://www.linkedin.com/in/aitorhdezdg/" target="_blank" rel="noopener noreferrer" class="social-linkedin">
+          <span>LinkedIn</span> ↗
+        </a>
         <button onclick="openModal('aviso')">Aviso Legal</button>
         <button onclick="openModal('privacidad')">Privacidad</button>
         <button onclick="openModal('cookies')">Cookies</button>
@@ -958,6 +1119,7 @@
           <li><strong>Actividad:</strong> Servicios profesionales de diseño, desarrollo web y posicionamiento digital.</li>
           <li><strong>Domicilio operativo:</strong> Santa Cruz de Tenerife, Canarias, España.</li>
           <li><strong>Email de contacto:</strong> aitorhernandez.es@gmail.com</li>
+          <li><strong>Perfil profesional:</strong> <a href="https://www.linkedin.com/in/aitorhdezdg/" target="_blank" rel="noopener noreferrer" style="color:#2563eb;">linkedin.com/in/aitorhdezdg/</a></li>
         </ul>
         <h4>2. Propiedad Intelectual y Condiciones de Uso</h4>
         <p>Los textos, diseños, código fuente y elementos gráficos de este sitio web son propiedad exclusiva de Aitor Hernández o cuentan con los correspondientes derechos de uso. Queda prohibida su reproducción o distribución sin autorización expresa.</p>
